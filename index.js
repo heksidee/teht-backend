@@ -43,7 +43,7 @@ app.post('/api/notes', (request, response) => {
   }
 
   const note = new Note({
-    conent: body.content,
+    content: body.content,
     important: body.important || false
   })
 
