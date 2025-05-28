@@ -2,6 +2,6 @@ POST http://localhost:3001/api/notes
 Content-Type: application/json
 
 {
-"content": "Developping is is something", 
-"important": true
+"content": "Backend developping is hard", 
+"important": false
 }

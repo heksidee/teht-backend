@@ -1,9 +1,10 @@
 require("dotenv").config()
 const express = require("express")
 const Note = require("./models/note")
+const cors = require("cors")
 
 const app = express()
-
+app.use(cors());
 
 let notes = []
 
@@ -59,6 +60,23 @@ app.delete("/api/notes/:id", (request, response) => {
       response.status(204).end()
     })
 })
+
+app.put("/api/notes/:id", (request, response) => {
+  const { important } = request.body
+
+  Note.findByIdAndUpdate(
+    request.params.id,
+    { important },
+    { new: true, runValidators: true, context: "query" }
+  )
+  .then(updatedNote => {
+    if (updatedNote) {
+      response.json(updatedNote);
+    } else {
+      response.status(404).json({ error: "Note not found" });
+    }
+  })
+});
 
 const unknownEndpoint = (request, response) => {
     response.status(404).send({ error: "unknown endpoint "})
