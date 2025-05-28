@@ -1,4 +1,6 @@
 require("dotenv").config()
+console.log("MongoDB URI (Render):", process.env.MONGODB_URI);
+
 const express = require("express")
 const Note = require("./models/note")
 const cors = require("cors")
