@@ -4,7 +4,6 @@ const config = require("./utils/config")
 const logger = require("./utils/logger")
 const middleware = require("./utils/middleware")
 const notesRouter = require("./controllers/notes")
-const notesRouter = require("./controllers/notes")
 
 const app = express()
 
