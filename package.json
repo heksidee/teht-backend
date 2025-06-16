@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --test",
     "lint": "eslint .",
     "build:ui": "rm -rf backend/dist && cd teht-frontend && npm run build && cp -r build ../backend/dist",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push"
