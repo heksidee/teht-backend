@@ -10,12 +10,7 @@ const api = supertest(app)
 
 beforeEach(async () => {
     await Note.deleteMany({})
-
-    let noteObject = new Note(helper.initialNotes[0])
-    await noteObject.save()
-    
-    noteObject = new Note(helper.initialNotes[1])
-    await noteObject.save()
+    await Note.insertMany(helper.initialNotes)
 })
 
 test("notes are returned as json", async () => {
@@ -48,7 +43,7 @@ test("a valid note can be added ", async () => {
         .post("/api/notes")
         .send(newNote)
         .expect(201)
-        .expect("Conent-Type", /application\/json/)
+        .expect("Content-Type", /application\/json/)
 
     const notesAtEnd = await helper.notesInDb()
     assert.strictEqual(notesAtEnd.length, helper.initialNotes.length + 1)
