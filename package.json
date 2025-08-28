@@ -8,7 +8,8 @@
     "test": "cross-env  NODE_ENV=test node --test",
     "lint": "eslint .",
     "build:ui": "rm -rf backend/dist && cd teht-frontend && npm run build && cp -r build ../backend/dist",
-    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push"
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push",
+    "start:test": "cross-env NODE_ENV=test node --watch index.js"
   },
   "author": "HD",
   "license": "ISC",
